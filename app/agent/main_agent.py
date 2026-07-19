@@ -34,6 +34,8 @@ from app.tools.upload_file_read_tool import read_file_content
 # 1. tools 只放最终交付相关的文件工具
 # 2. subagents 放网络、数据库、RAGFlow 三类信息获取助手
 # 3. checkpointer 通过 thread_id 保存同一会话中的执行上下文
+# InMemorySaver将对话状态保存在内存中，进程结束后丢失
+# 生产环境建议使用 SqliteSaver 或 PostgresSaver
 main_agent = create_deep_agent(
     model=model,
     system_prompt=main_agent_content["system_prompt"],
